@@ -5,7 +5,7 @@ import org.example.near.exception.ErrorCode;
 import org.example.near.exception.model.CustomException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -37,7 +37,7 @@ public class ControllerAdvice {
     //전달된 인자의 유효성 검사 실패 시 발생
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    protected BaseResponse handleMethodArgumentNotValidException(final @NotNull MethodArgumentNotValidException e) {
+    protected BaseResponse handleMethodArgumentNotValidException(final MethodArgumentNotValidException e) {
         FieldError fieldError = Objects.requireNonNull(e.getFieldError());
         logger.error("Validation error for field {}: {}", fieldError.getField(), fieldError.getDefaultMessage());
         return BaseResponse.error(ErrorCode.VALIDATION_REQUEST_MISSING_EXCEPTION, String.format("%s. (%s)", fieldError.getDefaultMessage(), fieldError.getField()));
@@ -82,7 +82,7 @@ public class ControllerAdvice {
     //그 외의 모든 예외
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
-    protected BaseResponse handleException(final @NotNull Exception e, final HttpServletRequest request) throws IOException {
+    protected BaseResponse handleException(final Exception e, final HttpServletRequest request) throws IOException {
         logger.error("Internal Server Error: {}", e.getMessage());
         return BaseResponse.error(ErrorCode.INTERNAL_SERVER_ERROR);
     }
