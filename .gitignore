@@ -150,6 +150,6 @@
     .gradle
     build
 
-    application.properties
+    application-oauth.properties
 
     # End of https://www.toptal.com/developers/gitignore/api/macos,intellij
