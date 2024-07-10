@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 3000
   servlet:
     encoding:
       charset: UTF-8
@@ -29,11 +29,11 @@ spring:
       client:
         registration:
           kakao:
-            clientId: ${CLIENT_ID}
-            clientSecret: ${CLIENT_SECRECT_KEY}
-            clientAuthenticationMethod: post
+            clientId: ${KAKAO_CLIENT_ID}
+            clientSecret: ${KAKAO_CLIENT_SECRECT_KEY}
+            clientAuthenticationMethod: client_secret_basic
             authorizationGrantType: authorization_code
-            redirectUri: http://localhost:8000/login/oauth2/code/kakao
+            redirectUri: ${KAKAO_REDIRECT_URL} # 프론트 로컬ㄴ환경 접속 - 인가코드 발급받기 <- 여기서 인가코드 넘어옴(code뒤에 것들)
             scope:
               - profile_nickname
               - profile_image
