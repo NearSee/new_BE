@@ -3,7 +3,7 @@ server:
   servlet:
     encoding:
       charset: UTF-8
-    context-path: /
+#    context-path: /
 
 spring:
   datasource:
@@ -33,7 +33,7 @@ spring:
             clientSecret: ${CLIENT_SECRECT_KEY}
             clientAuthenticationMethod: post
             authorizationGrantType: authorization_code
-            redirectUri: ${KAKAO_REDIRECT_URL}
+            redirectUri: http://localhost:8000/login/oauth2/code/kakao
             scope:
               - profile_nickname
               - profile_image
@@ -58,3 +58,4 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
+

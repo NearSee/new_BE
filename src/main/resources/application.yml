@@ -3,7 +3,7 @@ server:
   servlet:
     encoding:
       charset: UTF-8
-    context-path: /
+#    context-path: /
 
 spring:
   datasource:
@@ -33,7 +33,7 @@ spring:
             clientSecret: ${CLIENT_SECRECT_KEY}
             clientAuthenticationMethod: post
             authorizationGrantType: authorization_code
-            redirectUri: ${KAKAO_REDIRECT_URL}
+            redirectUri: http://localhost:8000/login/oauth2/code/kakao
             scope:
               - profile_nickname
               - profile_image
@@ -59,22 +59,3 @@ logging:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
 
-# cors 설정
-cors:
-  allowed-origins: 'http://localhost:3000'
-  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
-  allowed-headers: '*'
-  max-age: 3600
-
-# jwt secret key 설정
-jwt.secret: '8sknjlO3NPTBqo319DHLNqsQAfRJEdKsETOds'
-
-# 토큰 관련 secret Key 및 RedirectUri 설정
-app:
-  auth:
-    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
-    tokenExpiry: 1800000
-    refreshTokenExpiry: 604800000
-  oauth2:
-    authorizedRedirectUris:
-      - http://localhost:3000/oauth/redirect
